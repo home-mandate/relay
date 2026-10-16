@@ -1,0 +1,8 @@
+# Default gitleaks rules plus one exact allowlist entry: the name of the TLS key-exchange group
+# X25519MLKEM768 next to the words "key exchange" looks like a generic API key.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "TLS group name, not a secret"
+regexes = ['''^X25519MLKEM768$''']

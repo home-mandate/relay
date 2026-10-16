@@ -1,0 +1,4 @@
+#!/bin/sh
+# Blocks commits that contain secrets. Install once with `make hooks`.
+set -e
+GOWORK=off exec go run github.com/zricethezav/gitleaks/v8@v8.28.0 git --pre-commit --staged --redact --no-banner .

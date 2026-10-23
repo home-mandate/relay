@@ -15,7 +15,7 @@ home) and the Home-Mandate Cloud relay. Public repository, AGPL-3.0-or-later.
 
 ## Checks
 
-Go 1.27.2 is required. Tools are pinned in the `Makefile` and fetched with `go run`.
+Go 1.27.3 is required. Tools are pinned in the `Makefile` and fetched with `go run`.
 
 ```sh
 make hooks                          # once: gitleaks on staged changes before every commit

@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/home-mandate/.github/main/profile/assets/hm-lockup-dark.svg">
+  <img src="https://raw.githubusercontent.com/home-mandate/.github/main/profile/assets/hm-lockup.svg" alt="Home-Mandate – AI is coming home. Decide what it may do." width="360">
+</picture>
+
 # Home-Mandate relay
 
 Specification and Go package for the **tunnel protocol** between the Home-Mandate gateway (in the
@@ -29,3 +34,8 @@ Coverage must stay at or above 80 % (the target for the `tunnel` package is 85 %
 ## Security
 
 See `SECURITY.md` and the security considerations in the specification.
+
+## License
+
+AGPL-3.0-or-later, see `LICENSE`. The name Home-Mandate and its logo are not covered by this
+license.

@@ -9,7 +9,7 @@ FUZZTIME  ?= 15s
 FUZZ_TARGETS := FuzzDecodeFrame FuzzReadFrame FuzzDecodeControl FuzzDecodeDataBind FuzzParseProxyV2 FuzzParseGatewaySPIFFEID FuzzHomeIDFromServerName
 export GOWORK := off
 
-.PHONY: check test cover vet staticcheck vulncheck actionlint secrets modverify hooks fuzz
+.PHONY: check test cover vet staticcheck vulncheck actionlint secrets modverify hooks fuzz fuzz-targets
 
 check: modverify vet staticcheck cover vulncheck actionlint secrets
 
@@ -57,6 +57,10 @@ fuzz:
 		echo "fuzz $$t"; \
 		go test ./tunnel -run '^$$' -fuzz "^$$t$$" -fuzztime $(FUZZTIME) || exit 1; \
 	done
+
+# Prints FUZZ_TARGETS as a JSON array; the scheduled workflow runs one job per target.
+fuzz-targets:
+	@printf '%s\n' $(FUZZ_TARGETS) | jq -R . | jq -sc .
 
 # Installs the repository's git hooks (gitleaks on staged changes before every commit).
 hooks:

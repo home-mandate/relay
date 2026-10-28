@@ -31,6 +31,9 @@ make fuzz FUZZTIME=15s              # every fuzz target, 15 seconds each
 
 Coverage must stay at or above 80 % (the target for the `tunnel` package is 85 %).
 
+`scheduled.yml` runs `make vulncheck` every night and every fuzz target for 45 minutes on the
+1st and 15th of every month; a failure opens an issue.
+
 ## Security
 
 See `SECURITY.md` and the security considerations in the specification.

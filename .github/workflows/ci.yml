@@ -1,16 +1,16 @@
 name: CI
 
-# Every push and pull request: tests with coverage gate, static checks, vulnerability and
-# secret scan, and a short fuzz run of every decoder (a failing input is kept as an artifact).
+# Every push to a branch other than main: tests with coverage gate, static checks, vulnerability
+# and secret scan, and a short fuzz run of every decoder (a failing input is kept as an artifact).
+# Changes reach main only through a pull request, so the commit was already checked: there is no
+# second run for the pull request and none after the merge.
 # make modverify also fails on a go.mod that `go mod tidy` would change. Staticcheck is skipped
 # with a warning while v0.8.1 cannot read Go 1.27 export data; the Makefile states when to remove
 # that. This module has no image and publishes nothing; the gateway and the relay import it as a
 # Go module.
 on:
   push:
-    branches: ["**"]
-  pull_request:
-    branches: [main]
+    branches-ignore: [main]
   workflow_dispatch:
 
 permissions:
@@ -18,7 +18,7 @@ permissions:
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  cancel-in-progress: true
 
 jobs:
   go:

@@ -1,0 +1,17 @@
+# Dependabot: version updates for what the nightly checks in scheduled.yml do not cover
+# (govulncheck and pnpm audit check the Go and npm dependencies).
+version: 2
+updates:
+  # The pinned GitHub Actions. All updates of a week in one pull request, and only
+  # releases that are at least 7 days old.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns: ["*"]
+    commit-message:
+      prefix: ci
